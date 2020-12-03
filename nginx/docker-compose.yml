@@ -32,8 +32,6 @@ services:
       - proxy
 
 volumes:
-  db:
-  nextcloud:
   certs:
   vhost.d:
   html:
