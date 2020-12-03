@@ -37,6 +37,5 @@ volumes:
   html:
 
 networks:
-  default:
-    external:
-      name: nginx-proxy
+  external:
+    name: nginx-proxy
