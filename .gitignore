@@ -1,1 +1,2 @@
-nextcloud/.app.env
+nextcloud/app.env
+nextcloud/db.env
