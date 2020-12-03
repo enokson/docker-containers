@@ -13,11 +13,6 @@ services:
       - db:/var/lib/mysql
     env_file:
      - ./db.env
-    environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_PASSWORD=
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
 
   app:
     image: nextcloud
