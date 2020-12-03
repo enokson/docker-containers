@@ -12,19 +12,32 @@ services:
     volumes:
       - db:/var/lib/mysql
     env_file:
-     - ./db.env
+      - db.env
 
   app:
-    image: nextcloud
-    ports:
-      - 8080:80
-    links:
-      - db
-    env_file:
-     - ./app.env
-    volumes:
-      - ./data/nextcloud:/var/www/html
+    image: nextcloud:fpm-alpine
     restart: always
+    volumes:
+      - ./nextcloud:/var/www/html
+    environment:
+      - MYSQL_HOST=db
+    env_file:
+      - db.env
+    depends_on:
+      - db
+
+  web:
+    build: ./web
+    restart: always
+    volumes:
+      - nextcloud:/var/www/html:ro
+    env_file:
+      - web.env
+    depends_on:
+      - app
+    networks:
+      - nginx-proxy
+      - default
 
 networks:
   default:
