@@ -30,7 +30,7 @@ services:
     build: ./web
     restart: always
     volumes:
-      - nextcloud:/var/www/html:ro
+      - ./nextcloud:/var/www/html:ro
     env_file:
       - web.env
     depends_on:
